@@ -1,4 +1,10 @@
 ## Bowling Spec
+
+1) Implements Martin's bowling design, that is
+
+    A Game class  
+    accepts a complete games worth of rolls, and  
+    calculates a score.
  
 1) Accept rolls one at a time
 
