@@ -1,80 +1,86 @@
-##Day 1
+## Day 1
 
-1) New Requirement:  
-     Write shameless green for bowling  
-     Bob Martin's spec, "Game" class recieves _all_ rolls and calculates score.  
+1) New Requirement -> Write shameless green for bowling  
+     Bob Martin's spec, "Game" class receives _all_ rolls and calculates score.  
 
-1) New Requirement:  
-    Calculate score of incomplete game
+1) New Requirement  -> Calculate score of incomplete game
 
-1) New Requirement:  
-    No-tap Game  
+1) New Requirement  -> OUTPUT: Display simplest possible scoresheet on stdout  
+    This is just so they can see a simple scoresheet independent of the tests.  
+    We'll add support for different output targets later.  
+
+1) New Requirement -> INPUT: Read rolls from stdin  
+    Straightforward input from stdin.  
+    Just like for output, we'll make this more complicated later.
+
+1) New Requirement -> No-tap Game  
     This should make them extract a config.
 
-1) New Requirement:  
-    Duckpin Game  
-    This should merely require adding a new config, no new code should be needed.  
-    It's just like magic.  
-    Yay, it's now lunch! (or possibly waaaay past lunch)
+1) New Requirement -> Duckpin Game  
+    Should just need a new config.
+    _It's almost like magic._  
+    _Yay, it's now lunch! (or possibly waaaay past lunch)_
 
 ### Lunch
 
 1) Introduce "structural" design patterns  
     adapters, composites, decorators and facades
 
-1) New Requirement: Acquire rolls from several "source"'s
-    * one by one from stdin
-    * one by one from a file? (watch disk for changes?, or not?)
-    * all rolls at once from a file?
+1) New Requirement -> INPUT: Alternative sources of rolls  
+    They add support for getting input from
 
-    Game (Scorer?) should be independent of "source" of rolls.  
-    They should TDD everything they write.
-    Use this to explore adapters, decorators and facades.
+    * highline (https://github.com/JEG2/highline/blob/master/examples/basic_usage.rb)
+    * TTY (https://github.com/piotrmurach/tty, specifically TTY-prompt and TTY-reader)  
+    They now need an adapter, so ..
+    * Explore alternative designs via sequence diagrams.  
+    _? Maybe they break up into teams, draw sequence diagrams and give presentations ?_
 
-1)	Explore possible designs via sequence diagrams
-
-1)  Write code for various "sources"
-
-1) New Requirement: Persist rolls to a "target"
-    * file?
-    * pstore?
-
-    Game (Scorer?) should be independent of target for persistence
-    They should TDD their new code.
-    This might also be useful for exploring adapters, decorators and facades.
-
-1)	Explore possible designs via sequence diagrams again
-
-1) They write or "adapt" existing "source" and "persistence" providers.  See below.
-
-#### Day 1 Instructor Notes/Questions/Ideas/Uncertainties
-
-* They can write their own "source" and "persistence" providers (if time permits),  
-  or
-* We can give them code for the different "source" and "persistence" providers, but trouble them with code that conforms to different APIs. This would free them from writing the code, but ensure they have to write adapters.
-
-Question: what's a requirement that would drive them to use the composite pattern?
+**Question:  
+Should I provide pre-written input/output variants and have them just do the wiring?**
 
 # Day 2
+
+1) New Requirement -> OUTPUT: Display prettier scoresheet to stdout  
+
+    * table_print (https://github.com/arches/table_print)
+    * term_table (https://github.com/tj/terminal-table)
+    * formatador (https://github.com/geemus/formatador)   
+    * Explore alternative designs via sequence diagrams.
+
+? Can we make them use decorators or facades to solve the above ?  
+
+1) New Requirement: PERSIST: Save rolls for later
+    * file?
+    * pstore?
+    * Explore alternative designs via sequence diagrams.
+
+
+**? What requirement would drive them to use the composite pattern ?**
+
+### Lunch
 
 1) Introduce "behavioral" design patterns  
     chain of responsibility, command, observer, state, strategy  
 
-1) New Requirement:  
-    Recalculate score when rolls change.   
+1) New Requirement -> Recalculate score when rolls change.   
     (Now they need to observe something.)
-
-### Lunch
+    (Now they're headed towards MVC.)
 
 1) New Requirement:  
-  Something that will force them to invent MVC.
-    This is about loosen coupling.  Extend the existing example to teach it!
+    Something that forces them to use the state pattern.
 
 
 # Day 3
 
+1) New Requirement:  
+  Something that will make them invent MVC.
+    This is about loosening coupling.  
+    Maybe they should break up into groups, research MVP, and then do presentations where they act out the parts. Some people play models, others views, others controllers, and finally, some folks play messages!
+
 1) Go through the Magic Tricks talk slides to explain what to test  
-    Give them a little app with multiple classes and some tightly coupled tests, and change requirements such that the tests break during a refactoring.  They should fix the tests, refactor to a new shape, and only _then_ implement the new requirement.
+    Give them a little app with multiple classes and some tightly coupled tests, and change requirements such that the tests break during a refactoring.  They should fix the tests, refactor to a new shape, and only _then_ implement the new requirement.  
+
+    Remember FakeFS (https://github.com/fakefs/fakefs)
 
 ### Lunch
 
@@ -90,14 +96,6 @@ Question: what's a requirement that would drive them to use the composite patter
      5-Pin
      Different pins score different values.  
      Should the incoming roles tell me the pin that fell, or the value of that pin?  Hmmmm.
-
-
-
-
-
-
-
-
 
 
 ----------------------------------------
