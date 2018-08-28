@@ -5,14 +5,6 @@
 
 1) New Requirement  -> Calculate score of incomplete game
 
-1) New Requirement  -> OUTPUT: Display simplest possible scoresheet on stdout  
-    This is just so they can see a simple scoresheet independent of the tests.  
-    We'll add support for different output targets later.  
-
-1) New Requirement -> INPUT: Read rolls from stdin  
-    Straightforward input from stdin.  
-    Just like for output, we'll make this more complicated later.
-
 1) New Requirement -> No-tap Game  
     This should make them extract a config.
 
@@ -20,11 +12,34 @@
     Should just need a new config.
     _It's almost like magic._  
     _Yay, it's now lunch! (or possibly waaaay past lunch)_
-
+    
 ### Lunch
 
 1) Introduce "structural" design patterns  
     adapters, composites, decorators and facades
+
+1) New Requirement  -> OUTPUT: Display simplest possible scoresheet on stdout  
+    This is just so they can see a simple scoresheet independent of the tests.  
+    We'll add support for different output targets later.  
+    
+1) New Requirement -> OUTPUT: Display prettier scoresheet to stdout  
+
+    * table_print (https://github.com/arches/table_print)
+    * term_table (https://github.com/tj/terminal-table)
+    * formatador (https://github.com/geemus/formatador)   
+    * Explore alternative designs via sequence diagrams.
+
+? Can we make them use decorators or facades to solve the above ?  
+
+
+**Question:  
+Should I provide pre-written input/output variants and have them just do the wiring?**
+
+# Day 2
+
+1) New Requirement -> INPUT: Read rolls from stdin  
+    Straightforward input from stdin.  
+    Just like for output, we'll make this more complicated later.
 
 1) New Requirement -> INPUT: Alternative sources of rolls  
     They add support for getting input from
@@ -35,25 +50,11 @@
     * Explore alternative designs via sequence diagrams.  
     _? Maybe they break up into teams, draw sequence diagrams and give presentations ?_
 
-**Question:  
-Should I provide pre-written input/output variants and have them just do the wiring?**
-
-# Day 2
-
-1) New Requirement -> OUTPUT: Display prettier scoresheet to stdout  
-
-    * table_print (https://github.com/arches/table_print)
-    * term_table (https://github.com/tj/terminal-table)
-    * formatador (https://github.com/geemus/formatador)   
-    * Explore alternative designs via sequence diagrams.
-
-? Can we make them use decorators or facades to solve the above ?  
-
-1) New Requirement: PERSIST: Save rolls for later
+1) New Requirement: PERSIST: Save rolls for later  
+   This would allow an input gui that passes one roll in at a time.
     * file?
     * pstore?
     * Explore alternative designs via sequence diagrams.
-
 
 **? What requirement would drive them to use the composite pattern ?**
 
@@ -61,26 +62,22 @@ Should I provide pre-written input/output variants and have them just do the wir
 
 1) Introduce "behavioral" design patterns  
     chain of responsibility, command, observer, state, strategy  
-
-1) New Requirement -> Recalculate score when rolls change.   
+    
+1) New Requirement -> Automatically recalculate score and update output when rolls occur
     (Now they need to observe something.)
-    (Now they're headed towards MVC.)
-
-1) New Requirement:  
-    Something that forces them to use the state pattern.
+    (This is MVC.)
+    This is about loosening coupling.  
+    Maybe they should break up into groups, research MVP, and then do presentations where they act out the parts. Some people play models, others views, others controllers, and finally, some folks play messages!
 
 
 # Day 3
-
-1) New Requirement:  
-  Something that will make them invent MVC.
-    This is about loosening coupling.  
-    Maybe they should break up into groups, research MVP, and then do presentations where they act out the parts. Some people play models, others views, others controllers, and finally, some folks play messages!
 
 1) Go through the Magic Tricks talk slides to explain what to test  
     Give them a little app with multiple classes and some tightly coupled tests, and change requirements such that the tests break during a refactoring.  They should fix the tests, refactor to a new shape, and only _then_ implement the new requirement.  
 
     Remember FakeFS (https://github.com/fakefs/fakefs)
+
+
 
 ### Lunch
 
