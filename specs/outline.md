@@ -1,103 +1,211 @@
-## Day 1
+# Day 1
 
-1) New Requirement -> Write shameless green for bowling  
-     Bob Martin's spec, "Game" class receives _all_ rolls and calculates score.  
+----
+### Task 1 - Bowling Kata  
 
-1) New Requirement  -> Calculate score of incomplete game
+Branch:  
+* task_1_bowling_kata
 
-1) New Requirement -> No-tap Game  
-    This should make them extract a config.
+Time: 30 minutes
 
-1) New Requirement -> Duckpin Game  
-    Should just need a new config.
-    _It's almost like magic._  
-    _Yay, it's now lunch! (or possibly waaaay past lunch)_
+Instructor:  
+* Describe the task (basically, say what's in tasks.md)  
+* Make sure they can run the tests
+
+----
+### Task 2 - No-tap and Duckpin
+
+Branch:
+* task_2_support_notap_duckpin
+
+Time: 2 30-minute blocks ?
+
+Instructor:
+* First, just do No-tap.
+* Is shameless green open to No-tap?
+* What do you need to vary? What smells? How to dry it out?
+* Once they get No-tap working, ask them to do duckpin and watch them be really happy that to just add a config.
+
+10:30?
+
+----
+### Task 4a - Lowball via config change and factory complexity
+
+Branch:
+* task_4_implement_lowball
+
+Time: 30 minutes
+
+Instructor:
+* Encourage them to try to solve this problem by creating a LOWBALL config, and extending it/changing the factory in whatever ways are required to support LOWBALL.
+
+They do:
+* write code
+
+Instructor:
+* What keys did you add to the config?
+* What changes did you make in the factory code?
+
+----
+### Task 4b - Learn to draw sequence and class diagrams
+
+After they finish (or fail to finish) hacking the config/factory
+
+Instructor:
+
+* Have them study the sequence diagram tutorials listed in references.txt
+* We explain class diagrams (TODO we draw one?, be prepared!)
+
+----
+## Lunch
+
+(maybe here, or perhaps midway into the next task)
+
+----
+### Task 4c - Lowball via extract parser
+
+Instructor:
+* They probably made the config much more general (by passing in an operation and some lambda's to evaluate in the factory).
+    * point out that these things are just hidden conditionals
+        * if the config is 'a', do thing 'a1'
+        * if the config if 'b', do thing 'b1', 
+        * etc.
+    * Conditionals mean we're missing objects.  
+    * What objects are missing?
+    * Make them figure out what varies, which is ...
+        * the rules for figuring out what kind of frame the incoming rolls represent, and
+        * the value to be added to the score for each pinfall
     
-### Lunch
-
-1) Introduce "structural" design patterns  
-    adapters, composites, decorators and facades
-
-1) New Requirement  -> OUTPUT: Display simplest possible scoresheet on stdout  
-    This is just so they can see a simple scoresheet independent of the tests.  
-    We'll add support for different output targets later.  
-    
-1) New Requirement -> OUTPUT: Display prettier scoresheet to stdout  
-
-    * table_print (https://github.com/arches/table_print)
-    * term_table (https://github.com/tj/terminal-table)
-    * formatador (https://github.com/geemus/formatador)   
-    * Explore alternative designs via sequence diagrams.
-
-? Can we make them use decorators or facades to solve the above ?  
 
 
-**Question:  
-Should I provide pre-written input/output variants and have them just do the wiring?**
+They do:
+* draw sequence/class diagrams of their proposed LOWBALL design
+* write code to
+    * extract the thing that varies (StandardRollParser)
+    * inject it so that they can depend on an abstract role (Parser)
+    * create another player of the role (LowballRollParser)
+        * Do they TDD this, or spike it via integration tests (the refactor branch commit at this point has ponderings)
+    * inject LowballRollParser when they're playing LOWBALL
+
+
+### Task 5 - Unit tests
+
+Instructor:
+* Walk through the Magic Tricks talk here.
+
+Branch:  
+* task_5_update_tests
+
+Time: 60 minutes
+
+They do:
+* Update the unit tests
+* Browse bowling_5_unit_tests_refactor and be prepared to discuss
+    * The StandardRollParserTest uses a made up config.  Ask them why?  What purpose does this serve?
+    * The Variant test uses a fake parser (TestParserWhichAlwaysReturnsTwoRollsOfOnePin).  Why?  Again, what purpose?
+
+
+
+*Day 1 probably ends before they complete Task 5.  Continue it on Day 2*
+
 
 # Day 2
 
-1) New Requirement -> INPUT: Read rolls from stdin  
-    Straightforward input from stdin.  
-    Just like for output, we'll make this more complicated later.
+----
+### Survey and Reflection?
 
-1) New Requirement -> INPUT: Alternative sources of rolls  
-    They add support for getting input from
+----
+### Finish Task 5 - Unit tests (complete this if needed)
 
-    * highline (https://github.com/JEG2/highline/blob/master/examples/basic_usage.rb)
-    * TTY (https://github.com/piotrmurach/tty, specifically TTY-prompt and TTY-reader)  
-    They now need an adapter, so ..
-    * Explore alternative designs via sequence diagrams.  
-    _? Maybe they break up into teams, draw sequence diagrams and give presentations ?_
+-----
+### Task 7 - Finish Interactive Game
 
-1) New Requirement: PERSIST: Save rolls for later  
-   This would allow an input gui that passes one roll in at a time.
-    * file?
-    * pstore?
-    * Explore alternative designs via sequence diagrams.
+Wo-ah
 
-**? What requirement would drive them to use the composite pattern ?**
+-----
+### Task 8 - Use classic scoresheet
 
-### Lunch
+Branch:  
+* task_8_use_classic_scoresheet
 
-1) Introduce "behavioral" design patterns  
-    chain of responsibility, command, observer, state, strategy  
-    
-1) New Requirement -> Automatically recalculate score and update output when rolls occur
-    (Now they need to observe something.)
-    (This is MVC.)
-    This is about loosening coupling.  
-    Maybe they should break up into groups, research MVP, and then do presentations where they act out the parts. Some people play models, others views, others controllers, and finally, some folks play messages!
+Notes:  
+For teaching adaptor pattern
+Also has some interesting tests. It creates API tests for scoresheets.
+
 
 
 # Day 3
 
-1) Go through the Magic Tricks talk slides to explain what to test  
-    Give them a little app with multiple classes and some tightly coupled tests, and change requirements such that the tests break during a refactoring.  They should fix the tests, refactor to a new shape, and only _then_ implement the new requirement.  
+----
+### Survey and Reflection?
 
-    Remember FakeFS (https://github.com/fakefs/fakefs)
+-----
+### Task 9 - Isolate Frame Status
+
+Branch:  
+* task_9_isolate_frame_status
+
+Notes:
+For fixing slightly incorrect hierachy
+For teaching composition
+For discussing mutation
+
+-----
+### Task 10 - Output multiple scoresheets
+
+Branch:  
+* task_10_output_multiple_scoresheets
+
+Notes:
+For teaching observer pattern
+For discussing MVC
+
+
+-----
+### Task 11 - Cheating
+
+Branch:  
+* task_11_cheat
+
+Notes:
+For teaching decorator pattern
+
+
+----
+----
+----
+----
+----
 
 
 
-### Lunch
-
-1) New Requirement:  
-     Lowball  
-     Gutter balls count as 10.  This is a special rule for 0 pins, which forces them to separate the number of pins knocked down from the score of those pins.
-
-1) New Requirement:  
-     The game I don't know with the red pin that's worth 10.
-     1 specific pin counts 10 points?  rather than 1?  Or something?
-
-1) New Requirement:  
-     5-Pin
-     Different pins score different values.  
-     Should the incoming roles tell me the pin that fell, or the value of that pin?  Hmmmm.
 
 
-----------------------------------------
-----------------------------------------
-## The "Official" outline
+
+    
+Need to explicitely address
+
+* "structural" design patterns  
+    * adapters 
+    * composites 
+    * decorators
+    * facades
+
+* "behavioral" design patterns  
+    * chain of responsibility
+    * command
+    * observer
+    * state
+    * strategy  
+    
+
+----
+----
+----
+----
+----
+
+## The original "Official" outline
 ### Day 1 - Testing and Design
 #### Lessons
 * Understanding the practice of TDD
