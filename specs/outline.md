@@ -1,20 +1,20 @@
 # Day 1
 ----
 ----
-### Task 1 - Bowling Kata  
+### Task 1 - Bowling Kata
 
-Branch:  
+Branch:
 * task_1_bowling_kata
 
 Lessons:
 * Shameless Green
 * Introduction to bowling scoring
 
-Time: 
+Time:
 * 30 minutes
 
-Instructor:  
-* Describe the task (basically, say what's in tasks.md)  
+Instructor:
+* Describe the task (basically, say what's in tasks.md)
 * Make sure they can run the tests
 
 
@@ -29,7 +29,7 @@ Lessons:
 * Open/closed, isolating the things that vary, DRY
 * Practice refactoring
 
-Time: 
+Time:
 * 2 30-minute blocks ?
 
 Instructor:
@@ -37,7 +37,7 @@ Instructor:
     * Is shameless green open to No-tap?
     * What do you need to vary? What smells? How to dry it out?
 * Once they get No-tap working
-    * ask them to do duckpin 
+    * ask them to do duckpin
     * watch them be really happy that they can just add a config.
 
 
@@ -54,7 +54,7 @@ Lessons:
     * one common, shareable but very abstract solution, vs
     * defining single abstract 'role' and dividing the code into multiple concrete role players.
 
-Time: 
+Time:
 * 30 minutes
 
 Instructor:
@@ -85,9 +85,9 @@ Instructor:
 
 ----
 ----
-## Lunch Lunch Lunch Lunch Lunch Lunch Lunch Lunch Lunch Lunch 
+## Lunch Lunch Lunch Lunch Lunch Lunch Lunch Lunch Lunch Lunch
 
-(maybe here, or perhaps midway into the next task)  
+(maybe here, or perhaps midway into the next task)
 
 ----
 ----
@@ -98,7 +98,7 @@ Lessons:
 * Sometimes you have to stop and think
 * Spikes can help you think if you don't understand the problem well enough to do TDD
 
-Time: 
+Time:
 * I wish I knew
 
 
@@ -106,14 +106,14 @@ Instructor:
 * They probably made the config much more general (by passing in an operation and some lambda's to evaluate in the factory).
     * point out that these things are just hidden conditionals, i.e.
         * if the config is 'a', do thing 'a1'
-        * if the config if 'b', do thing 'b1', 
+        * if the config if 'b', do thing 'b1',
         * etc.
-    * Conditionals mean we're missing objects.  
+    * Conditionals mean we're missing objects.
     * What objects are missing?
     * Make them figure out what varies, which is ...
         * the rules for figuring out what kind of frame the incoming rolls represent, and
         * the value to be added to the score for each pinfall
-    
+
 
 
 They do:
@@ -128,9 +128,9 @@ They do:
 
 ----
 ----
-### Task - Magic Tricks Talk 
+### Task - Magic Tricks Talk
 
-Time: 
+Time:
 * 30 minutes
 
 Lessons:
@@ -147,13 +147,13 @@ Instructor:
 ----
 ### Task 5 - Unit tests
 
-Branch:  
+Branch:
 * task_5_update_tests
 
 Lessons:
 * Practice writing loosly coupled unit tests
 
-Time: 
+Time:
 * 60 minutes
 
 They do:
@@ -182,18 +182,18 @@ They do:
 ----
 ### Task 7 - Finish Interactive Game
 
-Branch:  
+Branch:
 * task_7_finish_interactive_game
 
 Lessons:
 * Layered Architectures
 * More practice with sequence/class diagrams
 
-Time: 
-* All Morning?  
+Time:
+* All Morning?
 * Perhaps into Lunch?
 
-Instructor:  
+Instructor:
 * We should re-read the tasks.md in the branch before talking to them
 
 They do:
@@ -208,7 +208,7 @@ Once they understand the starting place, they do:
 
 ----
 ----
-## Lunch Lunch Lunch Lunch Lunch Lunch Lunch Lunch Lunch Lunch 
+## Lunch Lunch Lunch Lunch Lunch Lunch Lunch Lunch Lunch Lunch
 ----
 ----
 ### Task 7a - Interactive Game Design Presentations and Discussion
@@ -221,7 +221,7 @@ Teams take turns presenting their interactive game designs, respsonding to quest
 ### Task 7b - Critique my Interactive Game implimentation
 
 They do:
-* checkout branch bowling_7_interactive_play_refactor  
+* checkout branch bowling_7_interactive_play_refactor
 * draw sequence/class diagrams
 * class discussion to critique the code
 
@@ -230,14 +230,14 @@ They do:
 ----
 ### Task 8 - Use classic scoresheet
 
-Branch:  
+Branch:
 * task_8_use_classic_scoresheet
 
 Lessons:
 * Adapter pattern
 * Test doubles: stubs, mocks, fakes
 
-Instructor:  
+Instructor:
 * Remind them about the adaptor pattern
 * Suggest that they write a Scoresheet API test
 * Ask them to consider which scoresheet should be used in the tests
@@ -247,11 +247,11 @@ Instructor:
 They do:
 * Adapt ClassicScoresheet such that it can be used by Game (i.e. such that it responds to #render)
 * Change Game to be able to use either scoresheet
-* Decide how to test the Game/Scoresheet interaction. 
+* Decide how to test the Game/Scoresheet interaction.
     * Game tests using a real scoresheet
     * Game tests by stubbing #render in a real scoresheet
     * Game tests using a fake scoresheet (whose API they guarantee)
-    * Game tests using a mock 
+    * Game tests using a mock
 
 
 
@@ -266,7 +266,7 @@ They do:
 ----
 ### Task 9 - Isolate Frame Status
 
-Branch:  
+Branch:
 * task_9_isolate_frame_status
 
 Lessons:
@@ -287,7 +287,7 @@ For discussing mutation
 ----
 ### Task 10 - Output multiple scoresheets
 
-Branch:  
+Branch:
 * task_10_output_multiple_scoresheets
 
 Lessons:
@@ -308,7 +308,7 @@ Instructor:
 ----
 ### Task 11 - Cheating
 
-Branch:  
+Branch:
 * task_11_cheat
 
 Lessons:
@@ -324,7 +324,7 @@ Lessons:
 ----
 ### All Bowl !!
 
-Have them pair up and bowl, using a random number generator to determine each roll's pinfall. They can play the bowling variant of their choice.  The winner advances, the loser becomes a fan of the winner.  
+Have them pair up and bowl, using a random number generator to determine each roll's pinfall. They can play the bowling variant of their choice.  The winner advances, the loser becomes a fan of the winner.
 
 Play until only one winner remains. They get the 'Luckiest Bowler' certificate.
 
@@ -362,21 +362,21 @@ Play until only one winner remains. They get the 'Luckiest Bowler' certificate.
 
 ### Day 2 - Orchestrating Object Collaboration
 ### Lessons
-* Understanding structural design patterns  
- 	 adapters, composites, decorators and facades  
+* Understanding structural design patterns
+ 	 adapters, composites, decorators and facades
 
-* Understanding behavioral design patterns  
-    chain of responsibility, command, observer, state, strategy  
+* Understanding behavioral design patterns
+    chain of responsibility, command, observer, state, strategy
 
-* Choosing the right technique for sharing code  
-    inheritance vs composition vs decoration  
+* Choosing the right technique for sharing code
+    inheritance vs composition vs decoration
 
-* Lowering costs by reducing coupling between objects  
+* Lowering costs by reducing coupling between objects
 
 ### Exercises
 1)	Practice well-known structural and behavioral patterns
 1)	Learn how to choose between inheritance, composition and decoration by solving the same problem with each technique
-1)	Explore different ways to remove conditionals by leaning on polymorphism 
+1)	Explore different ways to remove conditionals by leaning on polymorphism
 1)	Simplify a real-world code example using a combination of techniques
 
 ## Day 3 - Application Architecture
@@ -390,3 +390,6 @@ Play until only one winner remains. They get the 'Luckiest Bowler' certificate.
 1)	Design a new application using sequence diagrams
 2)	Write code that implements a layered architecture
 
+## General notes
+
+- Write down the purpose of each lesson/task on the whiteboard
