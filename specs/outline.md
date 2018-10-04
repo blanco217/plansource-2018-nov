@@ -79,8 +79,10 @@ Lessons:
 
 Instructor:
 
-* Have them study the sequence diagram tutorials listed in references.txt
 * We explain class diagrams (TODO we draw one?, be prepared!)
+* Have them study the sequence diagram tutorials listed in references.txt
+* Demo the seqence diagram syntax for creating new classes! They won't notice it in the tutorials.
+
 
 
 ----
@@ -180,31 +182,78 @@ They do:
 
 ----
 ----
+### Task 6 (has no 'task' branch in repo)
+
+Branch:
+* bowling_6_detailed_scoresheet_refactor
+
+Notes:
+
+This refacotor adds PendingFrame as a subclass of Frame so scoresheet can differentiate between a missing roll and a gutterball.
+
+It also adds max_rolls_in_frame to the configs so it can print a frame that's the right visual width.  I can't figure out a way to derive this number, so I just put it into the configs.
+
+The actual DetailedScoresheet code is not very interesting, but the TDD that creates it might be useful for them to study.
+
+The first commit in the refactor branch contains a description of the problem in bowing_test.rb
+
+The step-by-step refactors do a pretty good job of walking through in the right size chunks.
+
+I fear they won't understand the next refactoring unless they understand this one, so to get them through this as quickly as possible....
+
+
+Lessons:
+* TDD
+* Delegation to  player of a role
+  * Frames sends running_score to a 'frame' which increments the score or returns nil, depending on whether it's a Frame or a PendingFrame.
+* How inheritance goes wrong
+  * When PendingFrame was created, the thing it specialized should have been pulled down to parallel subclass 'CompleteFrame'.
+
+Instructor:
+
+* Hook up to the projector and show them how to compare branches in GitLens.
+    * Select bowling_5_unit_tests_example then 'select for compare'
+    * Select bowling_6_detailed_scoresheet_example then 'compare to selected'
+* Walk through the comparison together, showing them the changes.
+
+They do:
+* Look at the endpoint of bowling_6_detailed_scoresheet_example and draw class/sequence diagrams
+* Walk through the refactoring and ponder the decisions
+* Articulate things that are wrong/suspicious about the design
+
+----
+----
 ### Task 7 - Finish Interactive Game
 
 Branch:
 * task_7_finish_interactive_game
 
+Notes:
+
+This branch adds Game, Player, MissingNormalRollsFrame, MissingBonusRollsFrame, GeneralTurnRule, and FinalTurnRule.
+
 Lessons:
 * Layered Architectures
 * More practice with sequence/class diagrams
+* Practice making up their own designs
 
 Time:
-* All Morning?
-* Perhaps into Lunch?
+* ???
 
 Instructor:
 * We should re-read the tasks.md in the branch before talking to them
 
 They do:
-* Get oriented by studYing the existing code (this task branch starts a few commits into the bowling_7_interactive_play_refactor, after the initial annoying puts/chomps have been written.)
-* Draw class and sequence diagrams for the code as it exists at the start of the task
+* Get oriented by studying the commits up to where the task branch starts (8 commits into the bowling_7_interactive_play_refactor, after the initial annoying puts/chomps have been written.)
+* Draw class and sequence diagrams for the code as it exists at the START of the task (This might not be needed if they've drawn diagrams of bowling_6_classic_scoresheet_example.)
 
-Once they understand the starting place, they do:
+NOTE: TAG THIS COMMIT IN THE REFACTOR BRANCH ?
+
+Once they're oriented about the starting point, they do:
 * Discuss possible interactive game designs
 * Draw class and sequence diagrams for their designs
-* Maybe ? write some code
-* Prepare to present their design to the class, illustrated by their class and sequence diagrams
+* Maybe ? write some code (probably not)
+* Prepare to present their design to the class, illustrated by their diagrams
 
 ----
 ----
@@ -218,12 +267,26 @@ Teams take turns presenting their interactive game designs, respsonding to quest
 
 ----
 ----
-### Task 7b - Critique my Interactive Game implimentation
+### Task 7b - Critique my Interactive Game implementation
 
 They do:
 * checkout branch bowling_7_interactive_play_refactor
-* draw sequence/class diagrams
+* draw sequence/class diagrams of the end point
 * class discussion to critique the code
+
+
+----
+----
+### Task - Patterns keynote presentation
+
+Time:
+* 30 minutes
+
+Lessons:
+
+
+Instructor:
+* Walk through the Patterns presentation here.
 
 
 ----
