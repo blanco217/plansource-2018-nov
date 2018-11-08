@@ -3,4 +3,5 @@
 require_relative '../bowling/bowling'
 
 game = Game.new
+game.add_observer DetailedScoresheet
 game.play
